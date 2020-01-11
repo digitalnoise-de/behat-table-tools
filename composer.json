@@ -1,0 +1,30 @@
+{
+    "name": "digitalnoise/behat-table-tools",
+    "description": "Tools for handling Behat tables",
+    "type": "behat-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Philip Weinke",
+            "email": "philip.weinke@digitalnoise.de"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "behat/gherkin": "^4.6",
+        "webmozart/assert": "^1.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Digitalnoise\\Behat\\TableTools\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Digitalnoise\\Behat\\TableTools\\Tests\\": "tests/"
+        }
+    }
+}
