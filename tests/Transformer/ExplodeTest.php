@@ -29,4 +29,13 @@ class ExplodeTest extends TestCase
 
         self::assertEquals(['a', ' b', ' c'], $result);
     }
+
+    public function test_transform_should_return_empty_array_for_empty_string()
+    {
+        $transformer = new Explode(',');
+
+        $result = $transformer('');
+
+        self::assertEquals([], $result);
+    }
 }

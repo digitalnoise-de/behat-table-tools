@@ -35,6 +35,10 @@ final class Explode
      */
     public function __invoke($value)
     {
+        if (empty($value)) {
+            return [];
+        }
+
         $values = explode($this->delimiter, $value);
         if (!$this->trim) {
             return $values;
