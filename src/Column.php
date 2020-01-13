@@ -112,8 +112,12 @@ final class Column
     {
         $value = array_key_exists($this->name, $data) ? $data[$this->name] : $this->default();
 
-        if ($this->required && $value instanceof NoValue) {
-            throw new InvalidArgumentException(sprintf('Array has not value for key "%s"', $this->name));
+        if ($value instanceof NoValue) {
+            if ($this->required) {
+                throw new InvalidArgumentException(sprintf('Array has no value for key "%s"', $this->name));
+            }
+
+            return $value;
         }
 
         return $this->transform($value);

@@ -58,7 +58,7 @@ class ColumnTest extends TestCase
     {
         $column = Column::create('name')->withRequired();
 
-        self::expectExceptionMessage('Array has not value for key "name"');
+        self::expectExceptionMessage('Array has no value for key "name"');
 
         $column->extract([]);
     }
@@ -88,6 +88,19 @@ class ColumnTest extends TestCase
         $result = $column->extract([]);
 
         self::assertEquals('paul', $result);
+    }
+
+    public function test_extract_should_not_transform_NoValue()
+    {
+        $column = Column::create('name')->withTransformer(
+            function () {
+                return false;
+            }
+        );
+
+        $result = $column->extract([]);
+
+        self::assertInstanceOf(NoValue::class, $result);
     }
 
     public function test_a_required_column_must_not_have_a_default_value()
